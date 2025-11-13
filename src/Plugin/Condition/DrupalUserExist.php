@@ -108,7 +108,7 @@ class DrupalUserExist extends RulesConditionBase implements ContainerFactoryPlug
       }
     }
     catch (\CiviCRM_API3_Exception $e) {
-      return FALSE;
+      // Exception occurred, fall through to return FALSE.
     }
     return FALSE;
   }
