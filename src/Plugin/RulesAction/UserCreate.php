@@ -196,8 +196,8 @@ class UserCreate extends RulesActionBase implements ContainerFactoryPluginInterf
         // Try to add an extension to username.
         $params['name'] = $format . '_' . $counter++;
       } while ($this->checkUserNameExists($params, $config->userSystem)
-              // Exit loop if to many errors
-              // Invalid charater in username for example.
+              // Exit loop if too many errors
+              // Invalid character in username for example.
               && $counter < 10);
     }
 
