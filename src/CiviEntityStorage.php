@@ -415,11 +415,11 @@ class CiviEntityStorage extends SqlContentEntityStorage {
     $civicrm_entity_settings = $this->getConfigFactory()->get('civicrm_entity.settings');
     $field_definitions = $entity->getFieldDefinitions();
     foreach ($field_definitions as $definition) {
-      if ($definition->getType() == 'metatag_computed') {
+      if ($definition->getType() === 'metatag_computed') {
         continue;
       }
 
-      if ($definition->getName() == 'path' && (!$entity->hasLinkTemplate('canonical') || !$entity->hasLinkTemplate('edit-form'))) {
+      if ($definition->getName() === 'path' && (!$entity->hasLinkTemplate('canonical') || !$entity->hasLinkTemplate('edit-form'))) {
         continue;
       }
 
@@ -591,7 +591,7 @@ class CiviEntityStorage extends SqlContentEntityStorage {
           $values[$field_name] = [];
         }
 
-        if ($storage_definition->getCardinality() == FieldStorageDefinitionInterface::CARDINALITY_UNLIMITED || count($values[$field_name]) < $storage_definition->getCardinality()) {
+        if ($storage_definition->getCardinality() === FieldStorageDefinitionInterface::CARDINALITY_UNLIMITED || count($values[$field_name]) < $storage_definition->getCardinality()) {
           $item = [];
           // For each column declared by the field, populate the item from the
           // prefixed database column.
@@ -731,7 +731,7 @@ class CiviEntityStorage extends SqlContentEntityStorage {
             $revision_query->values($record);
           }
 
-          if ($storage_definition->getCardinality() != FieldStorageDefinitionInterface::CARDINALITY_UNLIMITED && ++$delta_count == $storage_definition->getCardinality()) {
+          if ($storage_definition->getCardinality() !== FieldStorageDefinitionInterface::CARDINALITY_UNLIMITED && ++$delta_count === $storage_definition->getCardinality()) {
             break;
           }
         }
@@ -845,7 +845,7 @@ class CiviEntityStorage extends SqlContentEntityStorage {
     $api_results = civicrm_api3('EntityTag', 'get', $api_params);
     if (!empty($api_results['values'])) {
       foreach ($api_results['values'] as $delta => $result) {
-        if ($result['entity_id'] == $entityId) {
+        if ($result['entity_id'] === $entityId) {
           return $result['id'];
         }
       }
