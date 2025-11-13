@@ -121,7 +121,7 @@ class ContactInGroup extends RulesConditionBase implements ContainerFactoryPlugi
       }
     }
     catch (\CiviCRM_API3_Exception $e) {
-      return FALSE;
+      // Exception occurred, fall through to return FALSE.
     }
     return FALSE;
   }
