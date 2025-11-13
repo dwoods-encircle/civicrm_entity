@@ -32,7 +32,7 @@ class CiviCrmApi implements CiviCrmApiInterface {
   public function get($entity, array $params = []) {
     $this->initialize();
 
-    if ($entity == 'contribution') {
+    if ($entity === 'contribution') {
       $params['return'][] = 'contribution_source';
       $params['return'] = array_diff($params['return'], ['source']);
     }
@@ -80,7 +80,7 @@ class CiviCrmApi implements CiviCrmApiInterface {
       'action' => $action,
     ]);
 
-    if ($entity == 'contribution' && isset($result['values']['source'])) {
+    if ($entity === 'contribution' && isset($result['values']['source'])) {
       $result['values']['contribution_source'] = $result['values']['source'];
       unset($result['values']['source']);
     }
