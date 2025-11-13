@@ -10,7 +10,7 @@ use Drupal\typed_data\Attribute\DataFilter;
 use Drupal\typed_data\DataFilterBase;
 
 /**
- * A data filter which changes a string to upper case.
+ * A data filter which formats a contact name as firstname.lastname.
  *
  * @DataFilter(
  *   id = "firstdotlast",
@@ -33,7 +33,6 @@ class FirstDotLastFilter extends DataFilterBase {
     else {
       return FALSE;
     }
-    // Return is_subclass_of($definition->getClass(), StringInterface::class);.
   }
 
   /**
